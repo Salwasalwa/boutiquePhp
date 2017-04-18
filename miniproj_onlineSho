@@ -1,0 +1,58 @@
+DROP TABLE IF EXISTS category ;
+CREATE TABLE category (id_category INT AUTO_INCREMENT NOT NULL,
+label_category VARCHAR(50),
+produit_id_custoner INT,
+PRIMARY KEY (id_category)) ENGINE=InnoDB;
+
+DROP TABLE IF EXISTS produit ;
+CREATE TABLE produit (id_custoner INT AUTO_INCREMENT NOT NULL,
+name_custoner VARCHAR(20),
+description_custoner VARCHAR(100),
+price_custoner FLOAT(10),
+category_id_category INT,
+PRIMARY KEY (id_custoner)) ENGINE=InnoDB;
+
+DROP TABLE IF EXISTS customer ;
+CREATE TABLE customer (id_customer INT AUTO_INCREMENT NOT NULL,
+frist_name_customer VARCHAR(20),
+last_name_customer VARCHAR(20),
+address_customer VARCHAR(20),
+cart_id_cart INT,
+PRIMARY KEY (id_customer)) ENGINE=InnoDB;
+
+DROP TABLE IF EXISTS cart ;
+CREATE TABLE cart (id_cart INT AUTO_INCREMENT NOT NULL,
+date_creation_cart DATE,
+customer_id_customer INT,
+PRIMARY KEY (id_cart)) ENGINE=InnoDB;
+
+DROP TABLE IF EXISTS order ;
+CREATE TABLE order (id_order INT AUTO_INCREMENT NOT NULL,
+date_creation_order DATE,
+id_customer **NOT FOUND**,
+PRIMARY KEY (id_order)) ENGINE=InnoDB;
+
+DROP TABLE IF EXISTS contient_cart ;
+CREATE TABLE contient_cart (id_custoner **NOT FOUND** AUTO_INCREMENT NOT NULL,
+id_cart **NOT FOUND** NOT NULL,
+quantity_contient INT,
+PRIMARY KEY (id_custoner,
+ id_cart)) ENGINE=InnoDB;
+
+DROP TABLE IF EXISTS contient_order ;
+CREATE TABLE contient_order (id_custoner **NOT FOUND** AUTO_INCREMENT NOT NULL,
+id_order **NOT FOUND** NOT NULL,
+quantity_contient INT,
+PRIMARY KEY (id_custoner,
+ id_order)) ENGINE=InnoDB;
+
+ALTER TABLE category ADD CONSTRAINT FK_category_produit_id_custoner FOREIGN KEY (produit_id_custoner) REFERENCES produit (id_custoner);
+
+ALTER TABLE produit ADD CONSTRAINT FK_produit_category_id_category FOREIGN KEY (category_id_category) REFERENCES category (id_category);
+ALTER TABLE customer ADD CONSTRAINT FK_customer_cart_id_cart FOREIGN KEY (cart_id_cart) REFERENCES cart (id_cart);
+ALTER TABLE cart ADD CONSTRAINT FK_cart_customer_id_customer FOREIGN KEY (customer_id_customer) REFERENCES customer (id_customer);
+ALTER TABLE order ADD CONSTRAINT FK_order_id_customer FOREIGN KEY (id_customer) REFERENCES customer (id_customer);
+ALTER TABLE contient_cart ADD CONSTRAINT FK_contient_cart_id_custoner FOREIGN KEY (id_custoner) REFERENCES produit (id_custoner);
+ALTER TABLE contient_cart ADD CONSTRAINT FK_contient_cart_id_cart FOREIGN KEY (id_cart) REFERENCES cart (id_cart);
+ALTER TABLE contient_order ADD CONSTRAINT FK_contient_order_id_custoner FOREIGN KEY (id_custoner) REFERENCES produit (id_custoner);
+ALTER TABLE contient_order ADD CONSTRAINT FK_contient_order_id_order FOREIGN KEY (id_order) REFERENCES order (id_order);

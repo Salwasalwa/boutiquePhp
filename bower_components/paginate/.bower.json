@@ -1,0 +1,30 @@
+{
+  "name": "paginate",
+  "version": "0.3.0",
+  "homepage": "https://github.com/neighbordog/jquery-paginate",
+  "authors": [
+    "Kevin Eichhorn <kevineichhorn@me.com>"
+  ],
+  "description": "A library for easy pagination",
+  "main": "src/jquery.paginate.js",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^1.11"
+  },
+  "_release": "0.3.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "0.3.0",
+    "commit": "cea0026f438092056997cc4d3d0803ef3ef8c078"
+  },
+  "_source": "https://github.com/neighbordog/jquery-paginate.git",
+  "_target": "^0.3.0",
+  "_originalSource": "paginate"
+}

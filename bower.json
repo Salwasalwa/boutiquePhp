@@ -1,0 +1,24 @@
+{
+  "name": "ls",
+  "authors": [
+    "Rémy <remdub@live.fr>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "jssor-slider": "jssor#^22.1.8",
+    "slick-carousel": "^1.6.0",
+    "font-awesome": "fontawesome#^4.7.0",
+    "paginate": "^0.3.0"
+  }
+}
